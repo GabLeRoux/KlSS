@@ -1,5 +1,5 @@
 language: csharp
-dotnet: 2.1.300
+dotnet: 2.2
 os:
   - osx
 env:
@@ -9,6 +9,7 @@ install:
   - wget -O MonoGame.pkg "http://teamcity.monogame.net/guestAuth/repository/download/MonoGame_PackageMacAndLinux/.lastSuccessful/MonoGame.pkg?branch_MonoGame=%3Cmaster%3E"
   - sudo installer -pkg "MonoGame.pkg" -target /
 script:
+  - dotnet restore
   - dotnet build KlSS.csproj
   - dotnet publish -r win-x64 -c release /p:TrimUnusedDependencies=true
   - dotnet publish -r osx-x64 -c release /p:TrimUnusedDependencies=true
